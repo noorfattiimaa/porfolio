@@ -1,0 +1,43 @@
+<!-- templates/main/thank_you.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white rounded-3xl shadow-xl p-12 max-w-lg text-center">
+        <!-- Checkmark Icon -->
+        <div class="flex items-center justify-center mb-6">
+            <svg class="w-20 h-20 text-green-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+        </div>
+
+        <!-- Thank You Text -->
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Thank You!</h1>
+        <p class="text-gray-600 mb-8">
+            Your message has been successfully sent. We will get back to you shortly.
+        </p>
+
+        <!-- Buttons -->
+        <div class="flex justify-center gap-4">
+            <!-- Back to Home -->
+            <a href="{% url 'home' %}" 
+               class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition-colors duration-300">
+                Back to Home
+            </a>
+
+            <!-- Send Another Message -->
+            <a href="{% url 'home' %}#contact-form" 
+               class="bg-gray-200 text-gray-800 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-300 transition-colors duration-300">
+                Send Another Message
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
