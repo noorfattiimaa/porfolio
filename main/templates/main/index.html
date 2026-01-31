@@ -1,64 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Noor Fatima — Full-Stack Developer Portfolio</title>
 
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Noor Fatima - Full-Stack Developer specializing in Django, React, and Python. Explore my portfolio of web applications, projects, and technical expertise.">
+    <meta name="keywords"
+        content="Full-Stack Developer, Django Developer, React Developer, Python Developer, Web Development, Portfolio, Noor Fatima">
+    <meta name="author" content="Noor Fatima">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Noor Fatima — Full-Stack Developer Portfolio">
+    <meta property="og:description"
+        content="Full-Stack Developer specializing in Django, React, and Python. Building scalable web applications with modern technologies.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/static/og-image.png">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Noor Fatima — Full-Stack Developer">
+    <meta name="twitter:description" content="Full-Stack Developer specializing in Django, React, and Python">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- AOS (Animate On Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         /* Base Colors & Typography */
+        :root {
+            --bg-primary: #F7F4EF;
+            --bg-secondary: #F3E9E2;
+            --text-primary: #4B3A33;
+            --text-secondary: #6B5B54;
+            --accent: #D4B98C;
+            --accent-hover: #C4A97C;
+            --glass-bg: rgba(255, 255, 255, 0.35);
+            --border-color: #E8D7CE;
+        }
+
+        body.dark-mode {
+            --bg-primary: #1a1614;
+            --bg-secondary: #2a2220;
+            --text-primary: #E8D7CE;
+            --text-secondary: #C4B5AE;
+            --accent: #D4B98C;
+            --accent-hover: #E4C99C;
+            --glass-bg: rgba(42, 34, 32, 0.35);
+            --border-color: #4B3A33;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F7F4EF; /* Light Creamy Background */
-            color: #4B3A33; /* Dark Brown Text */
-            transition: background-color 0.5s ease;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
+
         .serif {
             font-family: 'Playfair Display', serif;
         }
+
         .main-color {
-            color: #4B3A33; /* Dark Brown */
+            color: var(--text-primary);
         }
+
         .accent-color {
-            background-color: #D4B98C; /* Muted Gold/Tan Accent */
+            background-color: var(--accent);
         }
+
         .accent-text {
-            color: #D4B98C;
+            color: var(--accent);
         }
+
         .glass {
-            background: rgba(255, 255, 255, 0.35);
+            background: var(--glass-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
 
         /* NEW: Sparkle/Twinkle Effect CSS - Applied only to Hero Section's background element */
-       @keyframes twinkle {
-            0%, 100% { opacity: 0.5; transform: scale(0.98); }
-            50% { opacity: 1; transform: scale(1.02); }
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(0.98);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.02);
+            }
         }
-        .hero-sparkle-bg { /* Renamed from .sparkle-bg to avoid global scope */
+
+        .hero-sparkle-bg {
+            /* Renamed from .sparkle-bg to avoid global scope */
             /* Using CSS gradients to create subtle, repeating dots */
-            background-image: 
+            background-image:
                 radial-gradient(circle at 15% 20%, #4B3A33 1px, transparent 1px),
                 radial-gradient(circle at 85% 70%, #D4B98C 1px, transparent 1px),
                 radial-gradient(circle at 50% 50%, #4B3A33 1px, transparent 1px);
             background-size: 80px 80px, 80px 80px, 80px 80px;
-            
+
             /* Apply slow, subtle animation */
             animation: twinkle 2s infinite alternate ease-in-out;
-        } 
+        }
 
 
-        
+
         /* Ensure content is above background elements */
         .hero-content {
             z-index: 10;
@@ -82,14 +146,17 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+
         .timeline-container::after {
             content: '';
             position: absolute;
             width: 3px;
-            background-color: #D4B98C; /* Accent color line */
+            background-color: #D4B98C;
+            /* Accent color line */
             top: 0;
             bottom: 0;
-            left: 50%; /* Center the line */
+            left: 50%;
+            /* Center the line */
             margin-left: -3px;
             z-index: 1;
         }
@@ -99,31 +166,38 @@
             position: relative;
             background-color: inherit;
             width: 50%;
-            margin-bottom: 24px; /* Space between items */
+            margin-bottom: 24px;
+            /* Space between items */
         }
 
         /* Mobile Layout: Stack all items on the left */
         @media (max-width: 768px) {
             .timeline-container::after {
-                left: 30px; /* Shift line to the left on mobile */
+                left: 30px;
+                /* Shift line to the left on mobile */
                 margin-left: 0;
             }
+
             .timeline-item-wrapper {
                 width: 100%;
                 padding-left: 60px;
                 padding-right: 15px;
             }
+
             .timeline-item-wrapper.right {
                 left: 0%;
             }
+
             /* Adjust content padding for sections on mobile (no sidebar) */
             .content-section {
-                padding-left: 1.5rem; /* Default mobile padding */
+                padding-left: 1.5rem;
+                /* Default mobile padding */
             }
         }
 
         /* Desktop Layout: Alternating Timeline */
         @media (min-width: 769px) {
+
             /* Left side item positioning (Desktop) */
             .timeline-item-wrapper.left {
                 left: 0;
@@ -133,9 +207,11 @@
             .timeline-item-wrapper.right {
                 left: 50%;
             }
+
             /* Add left padding to all major sections to account for the fixed sidebar */
             .content-section {
-                padding-left: 6rem; /* Extra padding for the sidebar */
+                padding-left: 6rem;
+                /* Extra padding for the sidebar */
             }
         }
 
@@ -146,8 +222,10 @@
             position: absolute;
             width: 14px;
             height: 14px;
-            background-color: #4B3A33; /* Dark brown marker */
-            border: 3px solid #D4B98C; /* Gold border */
+            background-color: #4B3A33;
+            /* Dark brown marker */
+            border: 3px solid #D4B98C;
+            /* Gold border */
             top: 28px;
             border-radius: 4px;
             z-index: 2;
@@ -171,583 +249,1304 @@
                 right: auto;
             }
         }
+
+        /* Mobile Navigation Menu */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            max-height: 400px;
+        }
+
+        /* Hamburger Menu Animation */
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #4B3A33;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Improved Mobile Spacing */
+        @media (max-width: 640px) {
+            .hero-content h1 {
+                font-size: 2.5rem !important;
+            }
+
+            .hero-content p {
+                font-size: 1rem !important;
+            }
+
+            .btn-mobile {
+                padding: 0.75rem 1.5rem !important;
+                font-size: 0.875rem !important;
+            }
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode .glass {
+            background: var(--glass-bg);
+        }
+
+        body.dark-mode .bg-\[\#F3E9E2\] {
+            background-color: var(--bg-secondary) !important;
+        }
+
+        body.dark-mode .bg-\[\#F7F4EF\] {
+            background-color: var(--bg-primary) !important;
+        }
+
+        body.dark-mode .bg-\[\#f6eee6\],
+        body.dark-mode .bg-\[#fbf6ef\] {
+            background-color: var(--bg-secondary) !important;
+        }
+
+        body.dark-mode .text-gray-600,
+        body.dark-mode .text-gray-700 {
+            color: var(--text-secondary) !important;
+        }
+
+        body.dark-mode .border-gray-400,
+        body.dark-mode .border-\[\#D4B98C\],
+        body.dark-mode .border-\[\#E8D7CE\] {
+            border-color: var(--border-color) !important;
+        }
+
+        body.dark-mode input,
+        body.dark-mode textarea {
+            background-color: transparent !important;
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode input::placeholder,
+        body.dark-mode textarea::placeholder {
+            color: var(--text-secondary) !important;
+            opacity: 0.6;
+        }
+
+        body.dark-mode .bg-\[\#4B3A33\],
+        body.dark-mode .bg-\[\#4a3b33\] {
+            background-color: var(--accent) !important;
+            color: #1a1614 !important;
+        }
+
+        body.dark-mode .bg-white {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* Additional text color overrides for dark mode */
+        body.dark-mode p,
+        body.dark-mode li,
+        body.dark-mode h1,
+        body.dark-mode h2,
+        body.dark-mode h3,
+        body.dark-mode h4,
+        body.dark-mode span {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .text-\[\#4B3A33\] {
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode strong {
+            color: var(--accent);
+        }
+
+        body.dark-mode .text-sm,
+        body.dark-mode .text-md,
+        body.dark-mode .text-lg,
+        body.dark-mode .text-xl {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .italic {
+            color: var(--text-secondary);
+        }
+
+        body.dark-mode a:not(.accent-text):not([class*="bg-"]) {
+            color: var(--accent);
+        }
+
+        /* Fix for light/faded text in dark mode */
+        body.dark-mode .opacity-80,
+        body.dark-mode .opacity-70,
+        body.dark-mode .opacity-60,
+        body.dark-mode .opacity-50 {
+            opacity: 1 !important;
+        }
+
+        body.dark-mode .text-white {
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode .text-black {
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode label {
+            color: var(--text-primary) !important;
+        }
+
+        /* Contact form specific fixes */
+        body.dark-mode .text-center {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .tracking-wide,
+        body.dark-mode .font-serif {
+            color: var(--text-primary);
+        }
+
+        /* Fix for About Me section opacity */
+        body.dark-mode .leading-relaxed {
+            color: var(--text-primary) !important;
+        }
+
+        /* Scroll Progress Bar */
+        #scrollProgress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #D4B98C, #4B3A33);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #4B3A33;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(75, 58, 51, 0.3);
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #backToTop:hover {
+            background: #3A2D2A;
+            transform: translateY(-5px);
+        }
+
+        /* Loading Animation */
+        #pageLoader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #F7F4EF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            transition: opacity 0.5s ease;
+        }
+
+        body.dark-mode #pageLoader {
+            background: #1a1614;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #E8D7CE;
+            border-top: 4px solid #D4B98C;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Typing Animation */
+        .typing-text::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Project Filter Tags */
+        .filter-tag {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tag.active {
+            background-color: #4B3A33;
+            color: white;
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
+        }
+
+        .project-card.hidden {
+            display: none;
+        }
+
+        /* Success Message Animation */
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .success-message {
+            animation: slideInUp 0.5s ease;
+        }
+
+        /* Testimonial Carousel */
+        .testimonial-slide {
+            display: none;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 
 <body class="relative overflow-x-hidden scroll-smooth">
 
-<!-- Subtle Decorative Blobs (Low Z-index) - Now STATIC (removed blob-1/2 classes) -->
-<div class="absolute -top-20 -left-20 w-72 h-72 bg-[#E8D7CE] rounded-full blur-3xl opacity-50 z-0"></div>
-<div class="absolute top-40 -right-20 w-80 h-80 bg-[#EFE2C8] rounded-full blur-3xl opacity-50 z-0"></div>
-
-<!-- REMOVED: Global Sparkle/Twinkle Background Layer -->
-
-<!-- New: Fixed Left Sidebar for Socials (Desktop Only) -->
-<div class="fixed left-0 top-0 bottom-0 w-16 hidden md:flex flex-col items-center justify-center z-50">
-    <div class="flex flex-col space-y-8 text-2xl main-color">
-        <a href="https://linkedin.com/in/noor-fattimaa" target="_blank" title="LinkedIn" class="hover:accent-text transition-colors transform hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.567-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.775 7 2.474v6.761z"/></svg>
-        </a>
-        <a href="https://github.com/noorfattiimaa" target="_blank" title="GitHub" class="hover:accent-text transition-colors transform hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.082-.742.082-.727.082-.727 1.205.084 1.839 1.237 1.839 1.237 1.07 1.833 2.807 1.304 3.492.997.107-.775.418-1.303.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.118-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.292-1.552 3.301-1.23 3.301-1.23.653 1.653.242 2.874.118 3.176.769.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.798 24 17.303 24 12c0-6.627-5.373-12-12-12z"/></svg>
-        </a>
-        <a href="mailto:noorrfattiimaa@gmail.com" target="_blank" title="Email" class="hover:accent-text transition-colors transform hover:scale-110">
-             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm6.623 12.775l-4.623-4.364v-3.411l4.623 4.364v3.411zm4.654 3.036l-1.697-1.603-4.041 4.225h14.834l-4.04-4.226-1.697 1.604-2.399 2.508-2.399-2.508zm1.905-2.001l2.399-2.508 4.041 4.226h-14.834l4.041-4.226 2.399 2.508 1.954 2.046 1.954-2.046zm-6.682-6.524l-4.623-4.364v-3.411l4.623 4.364v3.411zm15.753-3.411l4.623 4.364v-3.411l-4.623-4.364v3.411z"/></svg>
-        </a>
+    <!-- Loading Animation -->
+    <div id="pageLoader">
+        <div class="loader"></div>
     </div>
-</div>
 
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgress"></div>
 
-<!-- Navigation Bar - Simplified and Aligned Right -->
-<nav class="sticky top-0 z-50 glass shadow-lg px-6 py-4 transition-all duration-300">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <!-- Logo on the left -->
-        <a href="#" class="serif text-2xl font-bold main-color tracking-wider hover:accent-text transition-colors">NF.</a>
-        
-        <!-- Links aligned to the right, matching the image style -->
-        <div class="flex space-x-8 text-sm font-medium">
-            <a href="#about" class="hover:accent-text transition-colors">About</a>
-            <a href="#experience" class="hover:accent-text transition-colors">Experience</a>
-            <a href="#skills" class="hover:accent-text transition-colors">Skills</a>
-            <a href="#projects" class="hover:accent-text transition-colors">Projects</a>
-            <a href="#contact" class="hover:accent-text transition-colors">Contact</a>
-        </div>
-    </div>
-</nav>
-
-<!-- Hero Section (Sparkle Background is now contained here) -->
-<section class="min-h-[90vh] flex items-center justify-center text-center px-6 relative py-20 content-section">
-    
-    <!-- Sparkle Background -->
-    <div class="hero-sparkle-bg absolute inset-0 z-0 opacity-50 pointer-events-none"></div>
-
-    <div class="hero-perspective-container">
-        <div data-aos="fade-up" data-aos-duration="1000" class="max-w-4xl hero-content"> 
-
-            <h1 class="serif text-5xl md:text-7xl font-extrabold main-color leading-snug tracking-tighter">
-                <span class="block accent-text text-3xl md:text-4xl mb-3 font-light">
-                    Hello, I'm
-                </span>
-                Noor Fatima
-            </h1>
-
-            <p class="mt-4 text-xl md:text-3xl font-bold main-color tracking-wide glass inline-block px-6 py-3 rounded-xl shadow-lg transition duration-500 hover:shadow-xl">
-                Full-Stack Developer & Backend Engineer
-            </p>
-
-            <p class="mt-8 max-w-3xl mx-auto text-lg md:text-xl main-color leading-relaxed opacity-90">
-                I design and build clean, scalable, and user-focused digital experiences by combining
-                thoughtful UI/UX with strong backend architecture. My work is driven by hands-on
-                problem-solving and a solid foundation in <strong>Python</strong>, <strong>Django</strong>,
-                and <strong>C++</strong>.
-            </p>
-
-            <div class="mt-12 flex justify-center gap-6">
-                <a href="#projects"
-                   class="group px-8 py-4 bg-[#4B3A33] text-white rounded-full font-semibold shadow-xl hover:bg-[#3A2D2A] transition duration-300 transform hover:scale-105 hover:shadow-2xl">
-                    View My Work
-                    <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
-                </a>
-
-                <a href="#contact"
-                   class="px-8 py-4 border-2 border-[#D4B98C] accent-text rounded-full font-semibold hover:bg-[#F3E9E2] transition duration-300 transform hover:scale-105">
-                    Let’s Connect
-                </a>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<!-- About Section (Enhanced Card Style, Split Layout, and Key Strengths) -->
-<section id="about" class="py-24 px-6 bg-[#F3E9E2] content-section">
-    <h2 class="serif text-4xl font-bold main-color mb-16 text-center" data-aos="fade-down" data-aos-once="true">
-        About Me
-    </h2>
-
-    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        
-        <!-- Profile Image -->
-        <div data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
-            <img src="static/noor.png" 
-                alt="Noor Fatima"
-                class="rounded-3xl shadow-2xl border-4 border-[#E8D7CE] object-cover w-full h-auto transform hover:scale-105 transition duration-500" />
-        </div>
-
-        <!-- About Content -->
-        <div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true" class="space-y-6"> 
-            <p class="leading-relaxed text-lg text-[#4B3A33] opacity-90">
-                I am a passionate computer scientist. I thrive on solving real-world problems, 
-                transforming ideas into functional, elegant products, and continuously expanding my technical expertise.
-            </p>
-
-            <p class="leading-relaxed text-lg text-[#4B3A33] opacity-90">
-                My strength lies in <span class="font-semibold accent-text">full-stack development</span> — crafting clean backend systems 
-                with Python & Django while creating responsive, intuitive frontends. I'm a learner, constantly exploring modern 
-                frameworks to ensure my solutions are efficient, maintainable, and user-centric. I believe 
-                <span class="italic">complexity should be hidden behind simplicity</span>.
-            </p>
-
-            <!-- Key Strengths (Mini Cards) -->
-            <div class="grid grid-cols-2 gap-4 mt-8 pt-4 border-t border-[#D4B98C]">
-                <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                    <p class="text-sm font-semibold accent-text">Problem Solving</p>
-                    <p class="text-xs text-gray-600 mt-1">Algorithm design & optimization</p>
-                </div>
-                <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                    <p class="text-sm font-semibold accent-text">Backend Architecture</p>
-                    <p class="text-xs text-gray-600 mt-1">Scalable API design & databases</p>
-                </div>
-                <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                    <p class="text-sm font-semibold accent-text">Full-Stack Thinking</p>
-                    <p class="text-xs text-gray-600 mt-1">End-to-end solution delivery</p>
-                </div>
-                <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                    <p class="text-sm font-semibold accent-text">Continuous Learning</p>
-                    <p class="text-xs text-gray-600 mt-1">Always exploring new tech</p>
-                </div>
-            </div>
-
-            <!-- Inspirational Quote -->
-            <blockquote class="mt-8 pt-6 border-l-4 border-[#D4B98C] pl-6 italic text-lg font-light text-[#4B3A33]">
-                "Driven by creativity, strengthened by logic — I build to empower."
-            </blockquote>
-        </div>
-    </div>
-</section>
-
-<!-- Professional Experience (Timeline - Enhanced look, no emoji in title) -->
-<!-- Added content-section class to apply padding -->
-<section id="experience" class="py-24 px-6 content-section">
-    <h2 class="serif text-4xl font-bold main-color mb-16 text-center" data-aos="fade-down" data-aos-once="true">
-        My Learning Journey
-    </h2>
-    
-    <div class="timeline-container">
-
-        <!-- Item 1: Left -->
-        <div class="timeline-item-wrapper left" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
-            <div class="glass p-6 rounded-xl shadow-lg border-2 border-[#D4B98C] transform hover:scale-[1.02] transition duration-300">
-                <h3 class="text-xl font-semibold main-color mb-1">ICS, Concordia College</h3>
-                <p class="text-sm accent-text font-medium border-b border-[#E8D7CE] pb-2 mb-2">2020 - 2022</p>
-                <p class="mt-2 text-gray-700 leading-relaxed text-sm">
-                    Studied Computer Science fundamentals. Engaged in coding exercises and small projects to strengthen my skills.
-                </p>
-            </div>
-        </div>
-
-        <!-- Item 2: Right -->
-        <div class="timeline-item-wrapper right" data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
-            <div class="glass p-6 rounded-xl shadow-lg border-2 border-[#D4B98C] transform hover:scale-[1.02] transition duration-300">
-                <h3 class="text-xl font-semibold main-color mb-1">Web development/h3>
-                <p class="text-sm accent-text font-medium border-b border-[#E8D7CE] pb-2 mb-2">At Uet-2024</p>
-                <p class="mt-2 text-gray-700 leading-relaxed text-sm">
-                    Built small web projects and applications using <strong>HTML, CSS, JavaScript</strong>, and <strong>C++</strong>. Practiced problem-solving, UI design, and basic concepts.
-                </p>
-            </div>
-        </div>
-
-        <!-- Item 3: Left -->
-        <div class="timeline-item-wrapper left" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
-            <div class="glass p-6 rounded-xl shadow-lg border-2 border-[#D4B98C] transform hover:scale-[1.02] transition duration-300">
-                <h3 class="text-xl font-semibold main-color mb-1">Learning & Practice</h3>
-                <p class="text-sm accent-text font-medium border-b border-[#E8D7CE] pb-2 mb-2">Ongoing</p>
-                <p class="mt-2 text-gray-700 leading-relaxed text-sm">
-                    Continuously learning new technologies like <strong>Django</strong>, <strong>Python</strong>, and <strong>React</strong>. Exploring coding challenges and tutorials to build a strong foundation for full-stack development.
-                </p>
-            </div>
-        </div>
-
-
-        <!-- Item 4: Right -->
-        <div class="timeline-item-wrapper right" data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
-            <div class="glass p-6 rounded-xl shadow-lg border-2 border-[#D4B98C] transform hover:scale-[1.02] transition duration-300">
-                <h3 class="text-xl font-semibold main-color mb-1">Junior Backend Developer</h3>
-                <p class="text-sm accent-text font-medium border-b border-[#E8D7CE] pb-2 mb-2">Tech Innovators Inc. | Jan 2024 - Present</p>
-                <p class="mt-2 text-gray-700 leading-relaxed text-sm">
-                    Building and maintaining backend services using <strong>Django</strong> and <strong>MySQL</strong>. Implemented REST APIs, optimized database queries, and ensured scalable, efficient application performance.
-                </p>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-
-
-
-
-
-<!-- Skills Section (No emoji in title, updated card icons) -->
-<!-- Added content-section class to apply padding -->
-<!-- Skills Section -->
-<section id="skills" class="py-24 px-6 bg-[#F7F4EF] content-section">
-    <h2 class="serif text-4xl font-bold main-color mb-16 text-center" data-aos="fade-down" data-aos-once="true">
-        Core Expertise
-    </h2>
-
-    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
-        <!-- Card 1: Frontend -->
-        <div class="glass p-8 rounded-3xl shadow-xl border-t-4 border-[#D4B98C] transform hover:shadow-2xl hover:-translate-y-2 transition duration-500" data-aos="zoom-in" data-aos-delay="100" data-aos-once="true">
-            <h3 class="font-bold text-2xl mb-4 main-color flex items-center">
-                <span class="text-3xl mr-3 accent-text font-serif block">[&nbsp;]</span> Frontend
-            </h3>
-            <ul class="space-y-3 text-md list-disc list-inside ml-2">
-                <li>HTML5 / CSS3-structured layouts</li>
-                <li>JavaScript-interactive features</li>
-                <li>Tailwind CSS & Bootstrap</li>
-                <li>React (Basic familiarity, component-based learning)</li>
-            </ul>
-        </div>
-
-        <!-- Card 2: Backend & Data -->
-        <div class="glass p-8 rounded-3xl shadow-xl border-t-4 border-[#D4B98C] transform hover:shadow-2xl hover:-translate-y-2 transition duration-500" data-aos="zoom-in" data-aos-delay="200" data-aos-once="true">
-            <h3 class="font-bold text-2xl mb-4 main-color flex items-center">
-                <span class="text-3xl mr-3 accent-text font-serif block">&lt;/&gt;</span> Backend & Databases
-            </h3>
-            <ul class="space-y-3 text-md list-disc list-inside ml-2">
-                <li >Python & Django (DRF basics)</li>
-                <li >MySQL(introductory)</li>
-                <li>RESTful API fundamentals</li>
-                <li>Deploying small projects (Heroku / local servers)</li>
-            </ul>
-        </div>
-
-        <!-- Card 3: Programming Fundamentals -->
-        <div class="glass p-8 rounded-3xl shadow-xl border-t-4 border-[#D4B98C] transform hover:shadow-2xl hover:-translate-y-2 transition duration-500" data-aos="zoom-in" data-aos-delay="300" data-aos-once="true">
-            <h3 class="font-bold text-2xl mb-4 main-color flex items-center">
-                <span class="text-3xl mr-3 accent-text font-serif block">|&nbsp;</span> Fundamentals
-            </h3>
-            <ul class="space-y-3 text-md list-disc list-inside ml-2">
-                <li>C++ core programming</li>
-                <li >Object-Oriented Programming (OOP)</li>
-                <li>Data Structures & Algorithms (DSA basics)</li>
-                <li>Version control with Git / GitHub</li>
-            </ul>
-        </div>
-        
-        <!-- Card 4: Tools & Workflow -->
-        <div class="glass p-8 rounded-3xl shadow-xl border-t-4 border-[#D4B98C] transform hover:shadow-2xl hover:-translate-y-2 transition duration-500" data-aos="zoom-in" data-aos-delay="400" data-aos-once="true">
-            <h3 class="font-bold text-2xl mb-4 main-color flex items-center">
-                <span class="text-3xl mr-3 accent-text font-serif block">~&nbsp;</span> Tools & Workflow
-            </h3>
-            <ul class="space-y-3 text-md list-disc list-inside ml-2">
-                <li>VS Code & Visual Studio</li>
-                <li>Git / GitHub</li>
-                <li>Agile-inspired workflow practices </li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-
-<!-- Projects Section (No emoji in title) -->
-
-<section id="projects" class="py-24 px-6 bg-[#F3E9E2] content-section">
-    <h2 class="serif text-4xl font-bold main-color mb-16 text-center" data-aos="fade-down" data-aos-once="true">
-        Featured Projects
-    </h2>
-
-    <div class="max-w-6xl mx-auto">
-        <!-- Projects Container -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Project 1 -->
-          <div class="glass p-8 rounded-3xl border-b-8 border-r-4 border-[#E8D7CE] transition-transform transform hover:scale-105"
-     data-aos="zoom-in"
-     data-aos-once="true">
-
-    <h3 class="text-2xl font-semibold mb-3 serif main-color">
-        Netflix Landing Page Clone
-    </h3>
-
-    <p class="text-sm text-gray-500 mb-4">
-        Tech Stack: <span class="font-semibold">HTML5</span>, <span class="font-semibold">CSS3</span>
-    </p>
-
-    <p class="leading-relaxed text-[#4B3A33] opacity-90 mb-6">
-        Built a responsive Netflix homepage clone using pure HTML and CSS as a hands-on practice project, focusing on layout,
-        and frontend fundamentals.Implemented structured sections including hero banners, content rows, FAQ dropdowns, and footer.
-    </p>
-
-    <div class="flex items-center space-x-2 mb-4">
-    <!-- HTML5 Icon -->
-    <span title="HTML5" class="transform transition-transform hover:scale-110 cursor-default">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <path fill="#E34F26" d="M1.5 0h21l-1.91 21.5L12 24l-8.59-2.5L1.5 0z"/>
-            <path fill="#cc7b59ff" d="M12 22.1l6.93-1.92L20.55 2H12v20.1z"/>
+    <!-- Back to Top Button -->
+    <div id="backToTop" title="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6" />
         </svg>
-    </span>
-
-    <!-- CSS3 Icon -->
-    <span title="CSS3" class="transform transition-transform hover:scale-110 cursor-default">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <path fill="#1572B6" d="M1.5 0h21l-1.91 21.5L12 24l-8.59-2.5L1.5 0z"/>
-            <path fill="#33A9DC" d="M12 22.1l6.93-1.92L20.55 2H12v20.1z"/>
-        </svg>
-    </span>
-
-    <span class="text-sm text-gray-600 font-medium">
-        Hand-coded Frontend Project
-    </span>
-</div>
-
-
-    <div class="space-x-6">
-        <a href="https://github.com/noorfattiimaa/NETFLIX-CLONE-REPO"
-           class="accent-text hover:underline font-semibold transition group">
-            <span class="transition-all group-hover:text-[#4B3A33]">View Code</span>
-            <span class="group-hover:translate-x-1 inline-block transition-transform">→</span>
-        </a>
-
-        <a href="https://github.com/noorfattiimaa/NETFLIX-CLONE-REPO"
-           class="main-color hover:underline transition">
-            GitHub
-        </a>
     </div>
 
-</div>
+
+    <!-- Subtle Decorative Blobs (Low Z-index) - Now STATIC (removed blob-1/2 classes) -->
+    <div class="absolute -top-20 -left-20 w-72 h-72 bg-[#E8D7CE] rounded-full blur-3xl opacity-50 z-0"></div>
+    <div class="absolute top-40 -right-20 w-80 h-80 bg-[#EFE2C8] rounded-full blur-3xl opacity-50 z-0"></div>
+
+    <!-- REMOVED: Global Sparkle/Twinkle Background Layer -->
+
+    <!-- New: Fixed Left Sidebar for Socials (Desktop Only) -->
+    <div class="fixed left-0 top-0 bottom-0 w-16 hidden md:flex flex-col items-center justify-center z-50">
+        <div class="flex flex-col space-y-8 text-2xl main-color">
+            <a href="https://linkedin.com/in/noor-fattimaa" target="_blank" title="LinkedIn"
+                class="hover:accent-text transition-colors transform hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.567-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.775 7 2.474v6.761z" />
+                </svg>
+            </a>
+            <a href="https://github.com/noorfattiimaa" target="_blank" title="GitHub"
+                class="hover:accent-text transition-colors transform hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.082-.742.082-.727.082-.727 1.205.084 1.839 1.237 1.839 1.237 1.07 1.833 2.807 1.304 3.492.997.107-.775.418-1.303.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.118-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.292-1.552 3.301-1.23 3.301-1.23.653 1.653.242 2.874.118 3.176.769.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.798 24 17.303 24 12c0-6.627-5.373-12-12-12z" />
+                </svg>
+            </a>
+            <a href="mailto:noorrfattiimaa@gmail.com" target="_blank" title="Email"
+                class="hover:accent-text transition-colors transform hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M0 3v18h24v-18h-24zm6.623 12.775l-4.623-4.364v-3.411l4.623 4.364v3.411zm4.654 3.036l-1.697-1.603-4.041 4.225h14.834l-4.04-4.226-1.697 1.604-2.399 2.508-2.399-2.508zm1.905-2.001l2.399-2.508 4.041 4.226h-14.834l4.041-4.226 2.399 2.508 1.954 2.046 1.954-2.046zm-6.682-6.524l-4.623-4.364v-3.411l4.623 4.364v3.411zm15.753-3.411l4.623 4.364v-3.411l-4.623-4.364v3.411z" />
+                </svg>
+            </a>
+        </div>
+    </div>
 
 
-            <!-- Project 2 -->
-            <div class="glass p-8 rounded-3xl border-b-8 border-r-4 border-[#E8D7CE] transition-transform transform hover:scale-105" data-aos="zoom-in" data-aos-once="true">
-                <h3 class="text-2xl font-semibold mb-3 serif main-color">Café Ordering System</h3>
-                <p class="text-sm text-gray-500 mb-4">Tech Stack: <span class="font-semibold">Python</span>, pyttsx3, CLI</p>
-                <p class="leading-relaxed text-[#4B3A33] opacity-90 mb-6">
-                    Built an interactive command-line café ordering application with voice greeting using pyttsx3. Features include dynamic menu management, real-time order tracking, and automated receipt generation with itemized billing.
-                </p>
-                <div class="flex items-center space-x-2 mb-4">
-                   <span title="Python" class="transform transition-transform hover:scale-110 cursor-default">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path fill="#3776AB" d="M12.002 0c-1.04.004-2.038.093-2.933.262-2.6.48-3.067 1.485-3.067 3.338v2.446h6.134v.816H3.558C1.37 6.862 0 8.183 0 10.53c0 2.35 1.188 3.805 3.376 3.805h2.088v-2.934c0-2.13 1.843-4.01 4.01-4.01h6.124c1.7 0 3.067-1.399 3.067-3.11V3.6c0-1.66-1.4-2.91-3.067-3.338C14.48.094 13.044-.004 12.002 0zM8.735 1.96a.79.79 0 1 1 0 1.58.79.79 0 0 1 0-1.58z"/>
-                            <path fill="#FFD43B" d="M23.999 10.53c0-1.69-1.433-3.118-3.376-3.118h-2.087v2.869c0 2.223-1.887 4.094-4.01 4.094H8.4c-1.673 0-3.067 1.418-3.067 3.11v.682c0 1.66 1.446 2.64 3.067 3.118 1.94.57 3.8.674 6.124 0 1.545-.447 3.067-1.346 3.067-3.118v-2.446h-6.124v-.816h9.155c1.942 0 3.376-1.35 3.376-3.375zM15.267 18.04a.79.79 0 1 1 0 1.58.79.79 0 0 1 0-1.58z"/>
+    <!-- Navigation Bar - Enhanced with Mobile Menu -->
+    <nav class="sticky top-0 z-50 glass shadow-lg px-6 py-4 transition-all duration-300">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center">
+                <!-- Logo on the left -->
+                <a href="#"
+                    class="serif text-2xl font-bold main-color tracking-wider hover:accent-text transition-colors">NF.</a>
+
+                <!-- Desktop Links -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#about" class="hover:accent-text transition-colors">About</a>
+                    <a href="#experience" class="hover:accent-text transition-colors">Experience</a>
+                    <a href="#skills" class="hover:accent-text transition-colors">Skills</a>
+                    <a href="#projects" class="hover:accent-text transition-colors">Projects</a>
+                    <a href="#contact" class="hover:accent-text transition-colors">Contact</a>
+
+                    <!-- Dark Mode Toggle -->
+                    <button id="themeToggle" class="theme-toggle ml-4" aria-label="Toggle dark mode">
+                        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                         </svg>
-                    </span>
-                    <span class="text-sm text-gray-600 font-medium">Python CLI Application</span>
+                        <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
                 </div>
-                <div class="space-x-6">
-                    <a href="https://github.com/noorfattiimaa/python-project-1" class="accent-text hover:underline font-semibold transition group">
-                        <span class="transition-all group-hover:text-[#4B3A33]">View Code</span> <span class="group-hover:translate-x-1 inline-block transition-transform">→</span>
+
+                <!-- Mobile Menu Container -->
+                <div class="flex items-center space-x-4 md:hidden">
+                    <!-- Dark Mode Toggle (Mobile) -->
+                    <button id="themeToggleMobile" class="theme-toggle" aria-label="Toggle dark mode">
+                        <svg id="sunIconMobile" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                        <svg id="moonIconMobile" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+
+                    <!-- Mobile Hamburger Menu -->
+                    <button class="md:hidden hamburger" id="hamburger" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div class="mobile-menu md:hidden" id="mobileMenu">
+                    <div class="flex flex-col space-y-4 pt-4 pb-2">
+                        <a href="#about" class="hover:accent-text transition-colors text-sm font-medium">About</a>
+                        <a href="#experience"
+                            class="hover:accent-text transition-colors text-sm font-medium">Experience</a>
+                        <a href="#skills" class="hover:accent-text transition-colors text-sm font-medium">Skills</a>
+                        <a href="#projects" class="hover:accent-text transition-colors text-sm font-medium">Projects</a>
+                        <a href="#contact" class="hover:accent-text transition-colors text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+            </div>
+    </nav>
+
+    <!-- Hero Section (Sparkle Background is now contained here) -->
+    <section class="min-h-[90vh] flex items-center justify-center text-center px-6 relative py-20 content-section">
+
+        <!-- Sparkle Background -->
+        <div class="hero-sparkle-bg absolute inset-0 z-0 opacity-50 pointer-events-none"></div>
+
+        <div class="hero-perspective-container">
+            <div data-aos="fade-up" data-aos-duration="1000" class="max-w-4xl hero-content">
+
+                <h1 class="serif text-5xl md:text-7xl font-extrabold main-color leading-snug tracking-tighter">
+                    <span class="block accent-text text-3xl md:text-4xl mb-3 font-light">
+                        Hello, I'm
+                    </span>
+                    <span id="typingName" class="typing-text"></span>
+                </h1>
+
+                <p
+                    class="mt-4 text-xl md:text-3xl font-bold main-color tracking-wide glass inline-block px-6 py-3 rounded-xl shadow-lg transition duration-500 hover:shadow-xl">
+                    Full-Stack Developer & Backend Engineer
+                </p>
+
+                <p class="mt-8 max-w-3xl mx-auto text-lg md:text-xl main-color leading-relaxed opacity-90">
+                    I design and build clean, scalable, and user-focused digital experiences by combining
+                    thoughtful UI/UX with strong backend architecture. My work is driven by hands-on
+                    problem-solving and a solid foundation in <strong>Python</strong>, <strong>Django</strong>,
+                    and <strong>C++</strong>.
+                </p>
+
+                <div class="mt-12 flex justify-center gap-6">
+                    <a href="#projects"
+                        class="group px-8 py-4 bg-[#4B3A33] text-white rounded-full font-semibold shadow-xl hover:bg-[#3A2D2A] transition duration-300 transform hover:scale-105 hover:shadow-2xl">
+                        View My Work
+                        <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
                     </a>
-                    <a href="https://github.com/noorfattiimaa/python-project-1" class="main-color hover:underline transition">GitHub</a>
+
+                    <a href="#contact"
+                        class="px-8 py-4 border-2 border-[#D4B98C] accent-text rounded-full font-semibold hover:bg-[#F3E9E2] transition duration-300 transform hover:scale-105">
+                        Let’s Connect
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Section (Enhanced Card Style, Split Layout, and Key Strengths) -->
+    <section id="about" class="py-24 px-6 bg-[#F3E9E2] content-section">
+        <h2 class="serif text-4xl font-bold main-color mb-16 text-center" data-aos="fade-down" data-aos-once="true">
+            About Me
+        </h2>
+
+        <div class="max-w-4xl mx-auto">
+
+            <!-- About Content -->
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" class="space-y-6">
+                <p class="leading-relaxed text-lg text-[#4B3A33] opacity-90">
+                    I am a passionate computer scientist. I thrive on solving real-world problems,
+                    transforming ideas into functional, elegant products, and continuously expanding my technical
+                    expertise.
+                </p>
+
+                <p class="leading-relaxed text-lg text-[#4B3A33] opacity-90">
+                    My strength lies in <span class="font-semibold accent-text">full-stack development</span> — crafting
+                    clean backend systems
+                    with Python & Django while creating responsive, intuitive frontends. I'm a learner, constantly
+                    exploring modern
+                    frameworks to ensure my solutions are efficient, maintainable, and user-centric. I believe
+                    <span class="italic">complexity should be hidden behind simplicity</span>.
+                </p>
+
+                <!-- Key Strengths (Mini Cards) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 pt-4 border-t border-[#D4B98C]">
+                    <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <p class="text-sm font-semibold accent-text">Problem Solving</p>
+                        <p class="text-xs text-gray-600 mt-1">Algorithm design & optimization</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <p class="text-sm font-semibold accent-text">Backend Architecture</p>
+                        <p class="text-xs text-gray-600 mt-1">Scalable API design & databases</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <p class="text-sm font-semibold accent-text">Full-Stack Thinking</p>
+                        <p class="text-xs text-gray-600 mt-1">End-to-end solution delivery</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <p class="text-sm font-semibold accent-text">Continuous Learning</p>
+                        <p class="text-xs text-gray-600 mt-1">Always exploring new tech</p>
+                    </div>
+                </div>
+
+                <!-- Inspirational Quote -->
+                <blockquote class="mt-8 pt-6 border-l-4 border-[#D4B98C] pl-6 italic text-lg font-light text-[#4B3A33]">
+                    "Driven by creativity, strengthened by logic — I build to empower."
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience (Timeline - Enhanced look, no emoji in title) -->
+    <!-- Added content-section class to apply padding -->
+    <section id="experience" class="py-24 px-6 content-section">
+        <h2 class="serif text-4xl font-bold main-color mb-16 text-center" data-aos="fade-down" data-aos-once="true">
+            My Learning Journey
+        </h2>
+
+        <div class="timeline-container">
+
+            <!-- Item 1: Left -->
+            <div class="timeline-item-wrapper left" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
+                <div
+                    class="glass p-6 rounded-xl shadow-lg border-2 border-[#D4B98C] transform hover:scale-[1.02] transition duration-300">
+                    <h3 class="text-xl font-semibold main-color mb-1">ICS, Concordia College</h3>
+                    <p class="text-sm accent-text font-medium border-b border-[#E8D7CE] pb-2 mb-2">2020 - 2022</p>
+                    <p class="mt-2 text-gray-700 leading-relaxed text-sm">
+                        Studied Computer Science fundamentals. Engaged in coding exercises and small projects to
+                        strengthen my skills.
+                    </p>
                 </div>
             </div>
 
-            <!-- Project 2 -->
-           <div class="glass p-8 rounded-3xl border-b-8 border-r-4 border-[#E8D7CE] transition-transform transform hover:scale-105" data-aos="zoom-in" data-aos-once="true">
-    <h3 class="text-2xl font-semibold mb-3 serif main-color">Railway Reservation System</h3>
-    <p class="text-sm text-gray-500 mb-4">Tech Stack: <span class="font-semibold">C++</span>, Object-Oriented Programming (OOP)</p>
-    
-    <p class="leading-relaxed text-[#4B3A33] opacity-90 mb-6">
-        Developed a console-based Railway Reservation System using <strong>C++</strong> and OOP principles. Features include ticket booking, cancellation, viewing train schedules, and managing passenger details with structured classes and objects to handle core functionalities efficiently.
-    </p>
-    
-    <div class="space-x-6">
-        <a href="#" class="accent-text hover:underline font-semibold transition group">
-            <span class="transition-all group-hover:text-[#4B3A33]">Run Demo</span> 
-            <span class="group-hover:translate-x-1 inline-block transition-transform">→</span>
-        </a>
-        <a href="#" class="main-color hover:underline transition">View Code (GitHub)</a>
-    </div>
-</div>
+            <!-- Item 2: Right -->
+            <div class="timeline-item-wrapper right" data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
+                <div
+                    class="glass p-6 rounded-xl shadow-lg border-2 border-[#D4B98C] transform hover:scale-[1.02] transition duration-300">
+                    <h3 class="text-xl font-semibold main-color mb-1">Web development</h3>
+                    <p class="text-sm accent-text font-medium border-b border-[#E8D7CE] pb-2 mb-2">At Uet-2024</p>
+                    <p class="mt-2 text-gray-700 leading-relaxed text-sm">
+                        Built small web projects and applications using <strong>HTML, CSS, JavaScript</strong>, and
+                        <strong>C++</strong>. Practiced problem-solving, UI design, and basic concepts.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 3: Left -->
+            <div class="timeline-item-wrapper left" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
+                <div
+                    class="glass p-6 rounded-xl shadow-lg border-2 border-[#D4B98C] transform hover:scale-[1.02] transition duration-300">
+                    <h3 class="text-xl font-semibold main-color mb-1">Learning & Practice</h3>
+                    <p class="text-sm accent-text font-medium border-b border-[#E8D7CE] pb-2 mb-2">Ongoing</p>
+                    <p class="mt-2 text-gray-700 leading-relaxed text-sm">
+                        Continuously learning new technologies like <strong>Django</strong>, <strong>Python</strong>,
+                        and <strong>React</strong>. Exploring coding challenges and tutorials to build a strong
+                        foundation for full-stack development.
+                    </p>
+                </div>
+            </div>
 
 
-            <!-- Project 3 -->
-            <div class="glass p-8 rounded-3xl border-b-8 border-r-4 border-[#E8D7CE] transition-transform transform hover:scale-105" data-aos="zoom-in" data-aos-once="true">
-    <h3 class="text-2xl font-semibold mb-3 serif main-color">Shudhaar: Civic Management Platform</h3>
-    <p class="text-sm text-gray-500 mb-4">Tech Stack: <span class="font-semibold">Python</span>, <span class="font-semibold">Django</span>, <span class="font-semibold">React</span>, <span class="font-semibold">AWS S3</span>, <span class="font-semibold">Stripe</span></p>
-    
-    <p class="leading-relaxed text-[#4B3A33] opacity-90 mb-6">
-        Developed a full-stack civic management platform enabling citizens, NGOs, and departments to report, track, and manage community issues.
-         Built a structured backend with <strong>Django.</strong>
-         Designed a responsive <strong>React</strong> frontend with dynamic pages for reporting, donations, transparency dashboards, and integrated Stripe payment handling.
-    </p>
-    
-    <div class="space-x-6">
-        <a href="#" class="accent-text hover:underline font-semibold transition group">
-            <span class="transition-all group-hover:text-[#4B3A33]">View Live Demo</span> 
-            <span class="group-hover:translate-x-1 inline-block transition-transform">→</span>
-        </a>
-        <a href="#" class="main-color hover:underline transition">View Code (GitHub)</a>
-    </div>
-</div>
+            <!-- Item 4: Right -->
+            <div class="timeline-item-wrapper right" data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
+                <div
+                    class="glass p-6 rounded-xl shadow-lg border-2 border-[#D4B98C] transform hover:scale-[1.02] transition duration-300">
+                    <h3 class="text-xl font-semibold main-color mb-1">Junior Backend Developer</h3>
+                    <p class="text-sm accent-text font-medium border-b border-[#E8D7CE] pb-2 mb-2">Tech Innovators Inc.
+                        | Jan 2024 - Present</p>
+                    <p class="mt-2 text-gray-700 leading-relaxed text-sm">
+                        Building and maintaining backend services using <strong>Django</strong> and
+                        <strong>MySQL</strong>. Implemented REST APIs, optimized database queries, and ensured scalable,
+                        efficient application performance.
+                    </p>
+                </div>
+            </div>
 
-</div>
-
-<div class="flex justify-center mt-10 text-center" data-aos="zoom-in" data-aos-once="true">
-    <a href="https://github.com/noorfattiimaa" target="_blank" class="px-10 py-4 bg-[#D4B98C] text-[#4B3A33] rounded-full font-bold shadow-lg hover:bg-[#EFE2C8] transition duration-300 transform hover:scale-[1.03] text-lg">
-    See All Projects on GitHub
-    </a>
-</div>
-    </div>
-</section>
-
-<!-- Certifications Section (No emoji in title) -->
-<!-- Added content-section class to apply padding -->
-<section id="certs" class="py-24 px-6 content-section">
-    <h2 class="serif text-4xl font-bold main-color mb-16 text-center" data-aos="fade-down" data-aos-once="true">
-        Certifications & Learning
-    </h2>
-
-    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-
-        <div class="glass p-6 rounded-2xl border-l-4 border-[#D4B98C] shadow-md hover:shadow-lg transition duration-300 transform hover:translate-y-[-2px]" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
-            <h3 class="font-semibold text-lg main-color">AI For Everyone</h3>
-            <p class="text-sm mt-1 text-gray-600">DeepLearning.AI (Coursera)</p>
-            <p class="text-xs mt-2 italic">Completed: Aug 20, 2025</p>
-            <a href="#" class="accent-text text-sm mt-2 block hover:underline">View Certificate</a>
         </div>
+    </section>
 
-        <div class="glass p-6 rounded-2xl border-l-4 border-[#D4B98C] shadow-md hover:shadow-lg transition duration-300 transform hover:translate-y-[-2px]" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
-            <h3 class="font-semibold text-lg main-color">Cybersecurity Awareness</h3>
-            <p class="text-sm mt-1 text-gray-600">HP LIFE</p>
-            <p class="text-xs mt-2 italic">Completed: July 20, 2025</p>
-            <a href="#" class="accent-text text-sm mt-2 block hover:underline">View Certificate</a>
+
+
+
+
+
+    <!-- Skills Section (No emoji in title, updated card icons) -->
+    <!-- Added content-section class to apply padding -->
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 px-6 bg-[#F7F4EF] content-section">
+        <h2 class="serif text-4xl font-bold main-color mb-16 text-center" data-aos="fade-down" data-aos-once="true">
+            Core Expertise
+        </h2>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Card 1: Full-Stack Web Development -->
+            <div class="glass p-8 rounded-3xl shadow-xl border-t-4 border-[#D4B98C] transform hover:shadow-2xl hover:-translate-y-2 transition duration-500"
+                data-aos="zoom-in" data-aos-delay="100" data-aos-once="true">
+                <h3 class="font-bold text-2xl mb-4 main-color flex items-center">
+                    <span class="text-3xl mr-3 accent-text font-serif block"></span> Full-Stack Web Development
+                </h3>
+                <ul class="space-y-3 text-md list-disc list-inside ml-2">
+                    <li><strong>Frontend:</strong> HTML, CSS, JavaScript, React, Tailwind</li>
+                    <li><strong>Backend:</strong> Python, Django, Django REST</li>
+                    <li>Building complete web applications</li>
+                    <li>RESTful API development</li>
+                </ul>
+            </div>
+
+            <!-- Card 2: Database & Backend Logic -->
+            <div class="glass p-8 rounded-3xl shadow-xl border-t-4 border-[#D4B98C] transform hover:shadow-2xl hover:-translate-y-2 transition duration-500"
+                data-aos="zoom-in" data-aos-delay="200" data-aos-once="true">
+                <h3 class="font-bold text-2xl mb-4 main-color flex items-center">
+                    <span class="text-3xl mr-3 accent-text font-serif block"></span> Database & Backend Logic
+                </h3>
+                <ul class="space-y-3 text-md list-disc list-inside ml-2">
+                    <li>MySQL database management</li>
+                    <li>Basic database design</li>
+                    <li>Built real-world systems</li>
+                    <li>Project-based development approach</li>
+                </ul>
+            </div>
+
+            <!-- Card 3: Problem-Solving & Logic -->
+            <div class="glass p-8 rounded-3xl shadow-xl border-t-4 border-[#D4B98C] transform hover:shadow-2xl hover:-translate-y-2 transition duration-500"
+                data-aos="zoom-in" data-aos-delay="300" data-aos-once="true">
+                <h3 class="font-bold text-2xl mb-4 main-color flex items-center">
+                    <span class="text-3xl mr-3 accent-text font-serif block"></span> Problem-Solving & Logic
+                </h3>
+                <ul class="space-y-3 text-md list-disc list-inside ml-2">
+                    <li>C++ & Python programming</li>
+                    <li>Object-Oriented Programming (OOP)</li>
+                    <li>Algorithm design & problem solving</li>
+                    <li>System design & workflows (basic SE level)</li>
+                </ul>
+            </div>
+
+            <!-- Card 4: Version Control & Deployment -->
+            <div class="glass p-8 rounded-3xl shadow-xl border-t-4 border-[#D4B98C] transform hover:shadow-2xl hover:-translate-y-2 transition duration-500"
+                data-aos="zoom-in" data-aos-delay="400" data-aos-once="true">
+                <h3 class="font-bold text-2xl mb-4 main-color flex items-center">
+                    <span class="text-3xl mr-3 accent-text font-serif block"></span> Version Control & Deployment
+                </h3>
+                <ul class="space-y-3 text-md list-disc list-inside ml-2">
+                    <li>Git/GitHub version control</li>
+                    <li>VS Code & Visual Studio</li>
+                    <li>Basic hosting (PythonAnywhere, Netlify)</li>
+                    <li>Working knowledge of deployment workflows</li>
+                </ul>
+            </div>
         </div>
-        
-        <div class="glass p-6 rounded-2xl border-l-4 border-[#D4B98C] shadow-md hover:shadow-lg transition duration-300 transform hover:translate-y-[-2px]" data-aos="fade-up" data-aos-delay="300" data-aos-once="true">
-            <h3 class="font-semibold text-lg main-color">SQL for Data Science</h3>
-            <p class="text-sm mt-1 text-gray-600">University of California, Davis (Coursera)</p>
-            <p class="text-xs mt-2 italic">Completed: June 15, 2025</p>
-            <a href="#" class="accent-text text-sm mt-2 block hover:underline">View Certificate</a>
+    </section>
+
+
+    <!-- Projects Section - Enhanced Creative Design -->
+    <section id="projects" class="py-24 px-6 bg-[#F3E9E2] content-section">
+        <h2 class="serif text-4xl font-bold main-color mb-8 text-center" data-aos="fade-down" data-aos-once="true">
+            Featured Projects
+        </h2>
+        <p class="text-center text-gray-600 mb-16 max-w-2xl mx-auto" data-aos="fade-up" data-aos-once="true">
+            A collection of projects showcasing my journey in full-stack development, from frontend design to backend
+            architecture.
+        </p>
+
+        <div class="max-w-6xl mx-auto">
+            <!-- Projects Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+
+                <!-- Project 1 - Shudhaar: Civic Management Platform -->
+                <div class="group relative glass p-8 rounded-3xl border-l-4 border-[#D4B98C] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+                    data-aos="fade-up" data-aos-once="true">
+
+                    <h3 class="text-2xl font-bold mb-3 serif main-color group-hover:accent-text transition-colors">
+                        Shudhaar: Civic Management Platform
+                    </h3>
+
+                    <!-- Tech Stack Pills -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-[#092E20] text-white text-xs font-semibold rounded-full">Django</span>
+                        <span class="px-3 py-1 bg-[#61DAFB] text-black text-xs font-semibold rounded-full">React</span>
+                        <!-- <span class="px-3 py-1 bg-[#FF9900] text-white text-xs font-semibold rounded-full">AWS S3</span>
+                        <span class="px-3 py-1 bg-[#635BFF] text-white text-xs font-semibold rounded-full">Stripe</span> -->
+                        <span
+                            class="px-3 py-1 bg-[#D4B98C] text-white text-xs font-semibold rounded-full">Full-Stack</span>
+                    </div>
+
+                    <p class="leading-relaxed text-gray-700 mb-6 text-sm">
+                        Developed a comprehensive full-stack civic management platform enabling citizens, NGOs, and
+                        government
+                        departments to report, track, and manage community issues. Built with Django REST backend and
+                        React frontend.
+                    </p>
+
+                    <!-- Key Features -->
+                    <div class="mb-6 space-y-2">
+                        <p class="text-xs font-semibold accent-text uppercase tracking-wide">Key Features</p>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>✓ Issue reporting & tracking system</li>
+                            <li>✓ Donation management with Stripe</li>
+                            <li>✓ Transparency dashboards</li>
+                            <li>✓ AWS S3 media storage</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <a href="#"
+                            class="group/link flex items-center space-x-2 accent-text hover:text-[#4B3A33] font-semibold transition">
+                            <span>Live Demo</span>
+                            <span class="group-hover/link:translate-x-1 transition-transform">→</span>
+                        </a>
+                        <a href="https://github.com/noorfattiimaa"
+                            class="text-gray-600 hover:text-[#4B3A33] transition text-sm">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+                <!-- Project 1 - Netflix Clone -->
+                <div class="group relative glass p-8 rounded-3xl border-l-4 border-[#D4B98C] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+                    data-aos="fade-up" data-aos-once="true">
+
+                    <!-- Project Number Badge -->
+                    <h3 class="text-2xl font-bold mb-3 serif main-color group-hover:accent-text transition-colors">
+                        Netflix Landing Page Clone
+                    </h3>
+
+                    <!-- Tech Stack Pills -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-[#E34F26] text-white text-xs font-semibold rounded-full">HTML5</span>
+                        <span class="px-3 py-1 bg-[#1572B6] text-white text-xs font-semibold rounded-full">CSS3</span>
+                        <span
+                            class="px-3 py-1 bg-[#D4B98C] text-white text-xs font-semibold rounded-full">Responsive</span>
+                    </div>
+
+                    <p class="leading-relaxed text-gray-700 mb-6 text-sm">
+                        Built a pixel-perfect responsive Netflix homepage clone using pure HTML and CSS.
+                        Implemented structured sections including hero banners, content rows, FAQ dropdowns,
+                        and footer with modern layout techniques.
+                    </p>
+
+                    <!-- Key Features -->
+                    <div class="mb-6 space-y-2">
+                        <p class="text-xs font-semibold accent-text uppercase tracking-wide">Key Features</p>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>✓ Responsive grid layouts</li>
+                            <li>✓ Interactive FAQ section</li>
+                            <li>✓ Modern CSS techniques</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <a href="https://github.com/noorfattiimaa/NETFLIX-CLONE-REPO"
+                            class="group/link flex items-center space-x-2 accent-text hover:text-[#4B3A33] font-semibold transition">
+                            <span>View Code</span>
+                            <span class="group-hover/link:translate-x-1 transition-transform">→</span>
+                        </a>
+                        <a href="https://github.com/noorfattiimaa/NETFLIX-CLONE-REPO"
+                            class="main-color hover:underline transition">
+                            GitHub
+                        </a>
+                    </div>
+
+                </div>
+
+
+                <!-- Project 2 - Café Ordering System -->
+                <div class="group relative glass p-8 rounded-3xl border-l-4 border-[#D4B98C] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+                    data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+
+                    <h3 class="text-2xl font-bold mb-3 serif main-color group-hover:accent-text transition-colors">
+                        Café Ordering System
+                    </h3>
+
+                    <!-- Tech Stack Pills -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-[#3776AB] text-white text-xs font-semibold rounded-full">Python</span>
+                        <span class="px-3 py-1 bg-[#D4B98C] text-white text-xs font-semibold rounded-full">CLI</span>
+                        <span
+                            class="px-3 py-1 bg-[#4B3A33] text-white text-xs font-semibold rounded-full">pyttsx3</span>
+                    </div>
+
+                    <p class="leading-relaxed text-gray-700 mb-6 text-sm">
+                        Built an interactive command-line café ordering application with voice greeting capabilities
+                        using pyttsx3.
+                        Features dynamic menu management, real-time order tracking, and automated receipt generation
+                        with itemized billing.
+                    </p>
+
+                    <!-- Key Features -->
+                    <div class="mb-6 space-y-2">
+                        <p class="text-xs font-semibold accent-text uppercase tracking-wide">Key Features</p>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>✓ Voice greeting system</li>
+                            <li>✓ Dynamic menu management</li>
+                            <li>✓ Automated receipt generation</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <a href="https://github.com/noorfattiimaa/python-project-1"
+                            class="group/link flex items-center space-x-2 accent-text hover:text-[#4B3A33] font-semibold transition">
+                            <span>View Code</span>
+                            <span class="group-hover/link:translate-x-1 transition-transform">→</span>
+                        </a>
+                        <a href="https://github.com/noorfattiimaa/python-project-1"
+                            class="text-gray-600 hover:text-[#4B3A33] transition text-sm">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 - Event Organizer Website -->
+                <div class="group relative glass p-8 rounded-3xl border-l-4 border-[#D4B98C] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+                    data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+
+                    <h3 class="text-2xl font-bold mb-3 serif main-color group-hover:accent-text transition-colors">
+                        Event Organizer Website
+                    </h3>
+
+                    <!-- Tech Stack Pills -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-[#E34F26] text-white text-xs font-semibold rounded-full">HTML5</span>
+                        <span class="px-3 py-1 bg-[#1572B6] text-white text-xs font-semibold rounded-full">CSS3</span>
+                        <span
+                            class="px-3 py-1 bg-[#D4B98C] text-white text-xs font-semibold rounded-full">Responsive</span>
+                    </div>
+
+                    <p class="leading-relaxed text-gray-700 mb-6 text-sm">
+                        Created a fully responsive event organizer website prototype using pure HTML and CSS. Features
+                        modern
+                        layouts for event listings, registration forms, and interactive sections with seamless
+                        cross-device adaptation.
+                    </p>
+
+                    <!-- Key Features -->
+                    <div class="mb-6 space-y-2">
+                        <p class="text-xs font-semibold accent-text uppercase tracking-wide">Key Features</p>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>✓ Fully responsive design</li>
+                            <li>✓ Event listing layouts</li>
+                            <li>✓ Registration forms</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <a href="https://www.linkedin.com/in/noor-fattimaa" target="_blank"
+                            class="group/link flex items-center space-x-2 accent-text hover:text-[#4B3A33] font-semibold transition">
+                            <span>Demo Video</span>
+                            <span class="group-hover/link:translate-x-1 transition-transform">→</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/noor-fattimaa" target="_blank"
+                            class="text-gray-600 hover:text-[#4B3A33] transition text-sm">
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4 - Railway Reservation System -->
+                <div class="group relative glass p-8 rounded-3xl border-l-4 border-[#D4B98C] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+                    data-aos="fade-up" data-aos-once="true">
+
+                    <h3 class="text-2xl font-bold mb-3 serif main-color group-hover:accent-text transition-colors">
+                        Railway Reservation System
+                    </h3>
+
+                    <!-- Tech Stack Pills -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-[#00599C] text-white text-xs font-semibold rounded-full">C++</span>
+                        <span class="px-3 py-1 bg-[#D4B98C] text-white text-xs font-semibold rounded-full">OOP</span>
+                        <span
+                            class="px-3 py-1 bg-[#4B3A33] text-white text-xs font-semibold rounded-full">Console</span>
+                    </div>
+
+                    <p class="leading-relaxed text-gray-700 mb-6 text-sm">
+                        Developed a console-based Railway Reservation System using C++ and OOP principles. Features
+                        ticket booking,
+                        cancellation, train schedules, and passenger management with structured classes for efficient
+                        operations.
+                    </p>
+
+                    <!-- Key Features -->
+                    <div class="mb-6 space-y-2">
+                        <p class="text-xs font-semibold accent-text uppercase tracking-wide">Key Features</p>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>✓ Ticket booking & cancellation</li>
+                            <li>✓ Train schedule management</li>
+                            <li>✓ OOP-based architecture</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <a href="https://github.com/noorfattiimaa" target="_blank"
+                            class="group/link flex items-center space-x-2 accent-text hover:text-[#4B3A33] font-semibold transition">
+                            <span>View Code</span>
+                            <span class="group-hover/link:translate-x-1 transition-transform">→</span>
+                        </a>
+                        <a href="https://github.com/noorfattiimaa" target="_blank"
+                            class="text-gray-600 hover:text-[#4B3A33] transition text-sm">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 5 - Bank Management System -->
+                <div class="group relative glass p-8 rounded-3xl border-l-4 border-[#D4B98C] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+                    data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+
+                    <h3 class="text-2xl font-bold mb-3 serif main-color group-hover:accent-text transition-colors">
+                        Bank Management System
+                    </h3>
+
+                    <!-- Tech Stack Pills -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-[#00599C] text-white text-xs font-semibold rounded-full">C++</span>
+                        <span class="px-3 py-1 bg-[#D4B98C] text-white text-xs font-semibold rounded-full">OOP</span>
+                        <span class="px-3 py-1 bg-[#4B3A33] text-white text-xs font-semibold rounded-full">File
+                            Handling</span>
+                    </div>
+
+                    <p class="leading-relaxed text-gray-700 mb-6 text-sm">
+                        Developed a comprehensive console-based Bank Management System using C++ and advanced OOP
+                        concepts.
+                        Features account management, transactions, and persistent data storage with robust error
+                        handling and validation.
+                    </p>
+
+                    <!-- Key Features -->
+                    <div class="mb-6 space-y-2">
+                        <p class="text-xs font-semibold accent-text uppercase tracking-wide">Key Features</p>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>✓ Account creation & management</li>
+                            <li>✓ Transaction history tracking</li>
+                            <li>✓ File-based data persistence</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <a href="https://github.com/noorfattiimaa" target="_blank"
+                            class="group/link flex items-center space-x-2 accent-text hover:text-[#4B3A33] font-semibold transition">
+                            <span>View Code</span>
+                            <span class="group-hover/link:translate-x-1 transition-transform">→</span>
+                        </a>
+                        <a href="https://github.com/noorfattiimaa" target="_blank"
+                            class="text-gray-600 hover:text-[#4B3A33] transition text-sm">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- Project 6: Shudhaar -->
+
+
+            </div>
+
+            <div class="flex justify-center mt-10 text-center" data-aos="zoom-in" data-aos-once="true">
+                <a href="https://github.com/noorfattiimaa" target="_blank"
+                    class="px-10 py-4 bg-[#D4B98C] text-[#4B3A33] rounded-full font-bold shadow-lg hover:bg-[#EFE2C8] transition duration-300 transform hover:scale-[1.03] text-lg">
+                    See All Projects on GitHub
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Contact Section (No emoji in title) -->
-<!-- Added content-section class to apply padding -->
-<!-- CONTACT SECTION -->
-<section id="contact" class="min-h-screen flex items-center justify-center bg-[#f6eee6] px-4">
-  
-  <div class="w-full max-w-md bg-[#fbf6ef] rounded-2xl shadow-xl p-8">
+    <!-- Certifications Section (No emoji in title) -->
+    <!-- Added content-section class to apply padding -->
+    <section id="certs" class="py-24 px-6 content-section">
+        <h2 class="serif text-4xl font-bold main-color mb-16 text-center" data-aos="fade-down" data-aos-once="true">
+            Certifications & Learning
+        </h2>
 
-    <!-- Heading -->
-    <h2 class="text-center text-2xl font-serif mb-4">Get In Touch</h2>
+        <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-    <!-- Description -->
-    <p class="text-center text-sm text-gray-600 mb-4">
-      I'm currently <span class="font-semibold">open to new opportunities</span> and excited about meaningful collaborations.
-      Let's create something amazing together!
-    </p>
+            <div class="glass p-6 rounded-2xl border-l-4 border-[#D4B98C] shadow-md hover:shadow-lg transition duration-300 transform hover:translate-y-[-2px]"
+                data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                <h3 class="font-semibold text-lg main-color">AI For Everyone</h3>
+                <p class="text-sm mt-1 text-gray-600">DeepLearning.AI (Coursera)</p>
+                <p class="text-xs mt-2 italic">Completed: Aug 20, 2025</p>
+                <a href="https://www.linkedin.com/in/noor-fattimaa"
+                    class="accent-text text-sm mt-2 block hover:underline">View Certificate</a>
+            </div>
 
-    <!-- Email -->
-    <p class="text-center text-xs text-gray-500 mb-2">Reach out directly:</p>
-    <p class="text-center font-semibold text-[#c9a36a] mb-6">
-      noorfattiimaa@gmail.com
-    </p>
+            <div class="glass p-6 rounded-2xl border-l-4 border-[#D4B98C] shadow-md hover:shadow-lg transition duration-300 transform hover:translate-y-[-2px]"
+                data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+                <h3 class="font-semibold text-lg main-color">Cybersecurity Awareness</h3>
+                <p class="text-sm mt-1 text-gray-600">HP LIFE</p>
+                <p class="text-xs mt-2 italic">Completed: July 20, 2025</p>
+                <a href="https://www.linkedin.com/in/noor-fattimaa"
+                    class="accent-text text-sm mt-2 block hover:underline">View Certificate</a>
+            </div>
 
-    <!-- Social Icons -->
-    <!-- Enhanced Social Links -->
+            <div class="glass p-6 rounded-2xl border-l-4 border-[#D4B98C] shadow-md hover:shadow-lg transition duration-300 transform hover:translate-y-[-2px]"
+                data-aos="fade-up" data-aos-delay="300" data-aos-once="true">
+                <h3 class="font-semibold text-lg main-color">SQL for Data Science</h3>
+                <p class="text-sm mt-1 text-gray-600">University of California, Davis (Coursera)</p>
+                <p class="text-xs mt-2 italic">Completed: June 15, 2025</p>
+                <a href="https://www.linkedin.com/in/noor-fattimaa"
+                    class="accent-text text-sm mt-2 block hover:underline">View Certificate</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section (No emoji in title) -->
+    <!-- Added content-section class to apply padding -->
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="min-h-screen flex items-center justify-center bg-[#f6eee6] px-4">
+
+        <div class="w-full max-w-md bg-[#fbf6ef] rounded-2xl shadow-xl p-8">
+
+            <!-- Heading -->
+            <h2 class="text-center text-2xl font-serif mb-4">Get In Touch</h2>
+
+            <!-- Description -->
+            <p class="text-center text-sm text-gray-600 mb-6">
+                I'm currently <span class="font-semibold">open to new opportunities</span> and excited about meaningful
+                collaborations.
+                Let's create something amazing together!
+            </p>
+
+            <!-- Email -->
+            <p class="text-center text-xs text-gray-500 mb-2">Reach out directly:</p>
+            <p class="text-center font-semibold text-[#c9a36a] mb-6">
+                noorfattiimaa@gmail.com
+            </p>
+
+            <!-- Social Icons -->
+            <!-- Enhanced Social Links -->
             <div class="flex justify-center items-center space-x-8 pt-8 border-t border-[#E8D7CE]">
-                <a href="https://linkedin.com/in/noor-fattimaa" target="_blank" title="LinkedIn" class="flex flex-col items-center gap-2 group hover:accent-text transition-colors">
-                    <div class="p-3 bg-white rounded-full shadow-md group-hover:shadow-lg group-hover:scale-110 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="main-color"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.567-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.775 7 2.474v6.761z"/></svg>
+                <a href="https://linkedin.com/in/noor-fattimaa" target="_blank" title="LinkedIn"
+                    class="flex flex-col items-center gap-2 group hover:accent-text transition-colors">
+                    <div
+                        class="p-3 bg-white rounded-full shadow-md group-hover:shadow-lg group-hover:scale-110 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor" class="main-color">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.567-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.775 7 2.474v6.761z" />
+                        </svg>
                     </div>
                     <span class="text-sm font-semibold main-color">LinkedIn</span>
                 </a>
-                <a href="https://github.com/noorfattiimaa" target="_blank" title="GitHub" class="flex flex-col items-center gap-2 group hover:accent-text transition-colors">
-                    <div class="p-3 bg-white rounded-full shadow-md group-hover:shadow-lg group-hover:scale-110 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="main-color"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.082-.742.082-.727.082-.727 1.205.084 1.839 1.237 1.839 1.237 1.07 1.833 2.807 1.304 3.492.997.107-.775.418-1.303.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.118-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.292-1.552 3.301-1.23 3.301-1.23.653 1.653.242 2.874.118 3.176.769.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.798 24 17.303 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                <a href="https://github.com/noorfattiimaa" target="_blank" title="GitHub"
+                    class="flex flex-col items-center gap-2 group hover:accent-text transition-colors">
+                    <div
+                        class="p-3 bg-white rounded-full shadow-md group-hover:shadow-lg group-hover:scale-110 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor" class="main-color">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.082-.742.082-.727.082-.727 1.205.084 1.839 1.237 1.839 1.237 1.07 1.833 2.807 1.304 3.492.997.107-.775.418-1.303.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.118-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.292-1.552 3.301-1.23 3.301-1.23.653 1.653.242 2.874.118 3.176.769.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.798 24 17.303 24 12c0-6.627-5.373-12-12-12z" />
+                        </svg>
                     </div>
                     <span class="text-sm font-semibold main-color">GitHub</span>
                 </a>
             </div>
-    <!-- FORM -->
-    <form method="POST" action="/">
-      {% csrf_token %}
+            <!-- FORM -->
+            <form method="POST" action="/">
+                {% csrf_token %}
 
-      <!-- Name & Email -->
-      <div class="grid grid-cols-2 gap-4 mb-4">
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          required
-          class="bg-transparent border-b border-gray-400 focus:outline-none focus:border-black text-sm py-2"
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          required
-          class="bg-transparent border-b border-gray-400 focus:outline-none focus:border-black text-sm py-2"
-        />
-      </div>
+                <!-- Name & Email -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <input type="text" name="name" placeholder="Name" required
+                        class="bg-transparent border-b border-gray-400 focus:outline-none focus:border-black text-sm py-2" />
+                    <input type="email" name="email" placeholder="Email" required
+                        class="bg-transparent border-b border-gray-400 focus:outline-none focus:border-black text-sm py-2" />
+                </div>
 
-      <!-- Subject -->
-      <input
-        type="text"
-        name="subject"
-        placeholder="Subject (Optional)"
-        class="w-full bg-transparent border-b border-gray-400 focus:outline-none focus:border-black text-sm py-2 mb-4"
-      />
+                <!-- Subject -->
+                <input type="text" name="subject" placeholder="Subject (Optional)"
+                    class="w-full bg-transparent border-b border-gray-400 focus:outline-none focus:border-black text-sm py-2 mb-4" />
 
-      <!-- Message -->
-      <textarea
-        name="message"
-        placeholder="Message"
-        required
-        rows="3"
-        class="w-full bg-transparent border-b border-gray-400 focus:outline-none focus:border-black text-sm py-2 mb-6 resize-none"
-      ></textarea>
+                <!-- Message -->
+                <textarea name="message" placeholder="Message" required rows="3"
+                    class="w-full bg-transparent border-b border-gray-400 focus:outline-none focus:border-black text-sm py-2 mb-6 resize-none"></textarea>
 
-      <!-- Button -->
-      <button
-        type="submit"
-        class="w-full bg-[#4a3b33] text-white py-3 rounded-lg text-sm tracking-wide hover:opacity-90 transition"
-      >
-        Send Secure Message
-      </button>
+                <!-- Button -->
+                <button type="submit"
+                    class="w-full bg-[#4a3b33] text-white py-3 rounded-lg text-sm tracking-wide hover:opacity-90 transition">
+                    Send Secure Message
+                </button>
 
-    </form>
+            </form>
 
-  </div>
-</section>
+        </div>
+    </section>
 
 
-<!-- Footer -->
-<footer class="py-6 text-center text-sm text-gray-600 border-t border-[#E8D7CE] bg-[#F7F4EF]">
-    <p>&copy; 2025 Noor Fatima. Designed and Engineered with Passion.</p>
-</footer>
+    <!-- Footer -->
+    <footer class="py-6 text-center text-sm text-gray-600 border-t border-[#E8D7CE] bg-[#F7F4EF]">
+        <p>&copy; 2025 Noor Fatima. Designed and Engineered with Passion.</p>
+    </footer>
 
 
-<!-- Scripts -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // 1. Initialize AOS
-        AOS.init({ 
-            once: true,
-            duration: 800,
-            offset: 150
-        });
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ===== LOADING ANIMATION - HIDE IMMEDIATELY =====
+            const pageLoader = document.getElementById('pageLoader');
+            setTimeout(() => {
+                pageLoader.style.opacity = '0';
+                setTimeout(() => {
+                    pageLoader.style.display = 'none';
+                }, 500);
+            }, 300);
 
-        // 2. Removed Three.js Initialization
+            // ===== TYPING ANIMATION FOR NAME =====
+            const typingName = document.getElementById('typingName');
+            if (typingName) {
+                const nameText = 'Noor Fatima';
+                let charIndex = 0;
 
-        // 3. Scrollspy for active navigation link (better UX)
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+                function typeName() {
+                    if (charIndex < nameText.length) {
+                        typingName.textContent += nameText.charAt(charIndex);
+                        charIndex++;
+                        setTimeout(typeName, 150); // 150ms delay between characters
+                    } else {
+                        // Remove typing cursor after completion
+                        setTimeout(() => {
+                            typingName.classList.remove('typing-text');
+                        }, 500);
+                    }
+                }
 
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('accent-text');
-                        if (link.getAttribute('href') === `#${entry.target.id}`) {
-                            link.classList.add('accent-text');
-                        }
-                    });
+                // Start typing after a short delay
+                setTimeout(typeName, 800);
+            }
+
+            // ===== DARK MODE TOGGLE =====
+            const themeToggle = document.getElementById('themeToggle');
+            const themeToggleMobile = document.getElementById('themeToggleMobile');
+            const sunIcon = document.getElementById('sunIcon');
+            const moonIcon = document.getElementById('moonIcon');
+            const sunIconMobile = document.getElementById('sunIconMobile');
+            const moonIconMobile = document.getElementById('moonIconMobile');
+
+            // Check for saved theme preference
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                if (sunIcon) sunIcon.style.display = 'none';
+                if (moonIcon) moonIcon.style.display = 'block';
+                if (sunIconMobile) sunIconMobile.style.display = 'none';
+                if (moonIconMobile) moonIconMobile.style.display = 'block';
+            }
+
+            function toggleTheme() {
+                document.body.classList.toggle('dark-mode');
+                const isDark = document.body.classList.contains('dark-mode');
+
+                if (sunIcon) sunIcon.style.display = isDark ? 'none' : 'block';
+                if (moonIcon) moonIcon.style.display = isDark ? 'block' : 'none';
+                if (sunIconMobile) sunIconMobile.style.display = isDark ? 'none' : 'block';
+                if (moonIconMobile) moonIconMobile.style.display = isDark ? 'block' : 'none';
+
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            }
+
+            if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+            if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+
+            // ===== SCROLL PROGRESS BAR =====
+            const scrollProgress = document.getElementById('scrollProgress');
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercent = (scrollTop / scrollHeight) * 100;
+                if (scrollProgress) scrollProgress.style.width = scrollPercent + '%';
+            });
+
+            // ===== BACK TO TOP BUTTON =====
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    if (backToTop) backToTop.classList.add('show');
+                } else {
+                    if (backToTop) backToTop.classList.remove('show');
                 }
             });
-        }, {
-            rootMargin: "-20% 0px -80% 0px" // Only trigger when section is roughly in the middle top part of the viewport
-        });
 
-        sections.forEach(section => {
-            observer.observe(section);
+            if (backToTop) {
+                backToTop.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // ===== INITIALIZE AOS =====
+            AOS.init({
+                once: true,
+                duration: 800,
+                offset: 150
+            });
+
+            // ===== SCROLLSPY FOR NAVIGATION =====
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('accent-text');
+                            if (link.getAttribute('href') === `#${entry.target.id}`) {
+                                link.classList.add('accent-text');
+                            }
+                        });
+                    }
+                });
+            }, {
+                rootMargin: "-20% 0px -80% 0px"
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // ===== MOBILE MENU TOGGLE =====
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    if (mobileMenu) mobileMenu.classList.toggle('active');
+                });
+            }
+
+            // Close mobile menu when a link is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (hamburger) hamburger.classList.remove('active');
+                    if (mobileMenu) mobileMenu.classList.remove('active');
+                });
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
+
 </html>
