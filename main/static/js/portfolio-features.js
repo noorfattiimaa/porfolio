@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ===== 5. TYPING ANIMATION =====
-    const typingElement = document.getElementById('typingText');
+    const typingElement = document.getElementById('typingName');
     if (typingElement) {
         const texts = [
             'Full-Stack Developer',
